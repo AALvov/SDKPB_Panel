@@ -187,18 +187,20 @@ z-index: 2;
   display: inline-block;
   color: white;
   position: absolute;
-  padding: 100px 100px;
+  padding: 200px 500px;
   margin: 10px 20px;
   border-radius: 10px;
+  background: transparent;
+  outline: 2px solid red;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-transform: uppercase;
+  /* text-transform: uppercase;
   letter-spacing: 2px;
   background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
   background-size: 200% auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
   transition: .5s;
-  font-size: 25px;
+  font-size: 25px; */
   cursor: pointer;
 }

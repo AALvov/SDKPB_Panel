@@ -67,6 +67,7 @@ height: calc(1080px - 125px);
   position: absolute;
   background: transparent;
   border: none;
+  cursor: pointer;
   /* outline: 2px solid red; */
   border-radius: 50%;
 }

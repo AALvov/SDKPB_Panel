@@ -1,0 +1,195 @@
+@font-face {
+  font-family: 'HeliosCond';
+  src: local('HeliosCond'), url('../fonts/HeliosCond.woff2') format('woff2'), url('../fonts/HeliosCond.woff') format('woff');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HeliosCond-Bold';
+  src: local('HeliosCond-Bold'), url('../fonts/HeliosCond-Bold.woff2') format('woff2'), url('../fonts/HeliosCond-Bold.woff') format('woff');
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: 'HeliosCond', 'Montesarat', sans-serif;
+  background: url(../img/Картинка\ для\ Фона\ 1.jpg);
+  background-size: cover;
+  max-height: 1080px;
+  /* overflow: hidden; */
+  background-repeat: no-repeat;
+}
+
+.container {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+display: flex;
+position: relative;
+align-items: center;
+/* outline: 1px solid red; */
+min-height: 1080px;
+}
+
+
+.btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: 2px solid red;
+  border-radius: 50%;
+}
+
+.little__btn {
+  width: 50px;
+  height: 50px;
+}
+
+
+.first__btn {
+  top: 266px;
+  left: 153px;
+}
+
+.second__btn {
+  top: 241px;
+  left: 234px;
+}
+
+
+.close__btn {
+  position: absolute;
+  display: none;
+  opacity: 0;
+  height: 1080px;
+  width: 1920px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.modal__window-first,
+.modal__window-second,
+.modal__window-third,
+.modal__window-fourth,
+.modal__window-fifth,
+.modal__window-sixth,
+.modal__window-seventh,
+.modal__window-eighth {
+width: 90%;
+display: none;
+padding: 10px;
+background:rgb(236,236,236);
+outline: 1px solid #000;
+opacity: 0;
+display: none;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+transition: opacity 0.3s ease-in-out;
+z-index: 2;
+}
+
+.medium__btn {
+  width: 90px;
+  height: 90px;
+}
+
+.third__btn {
+  top: 175px;
+  left: 465px;
+}
+
+.fourth__btn {
+  top: 147px;
+  left: 715px;
+}
+
+.fifth__btn {
+  top: 122px;
+  left: 966px;
+}
+
+.sixth__btn {
+  top: 106px;
+  left: 1211px;
+}
+
+.seventh__btn {
+  top: 77px;
+  right: 367px;
+}
+
+.eighth__btn {
+  top: 69px;
+  right: 119px;
+}
+
+.modal__window-active {
+  opacity: 1;
+  display: block;
+
+}
+
+.modal__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img__container {
+  width: 50%;
+  text-align:center;
+  padding-right:10px;
+ }
+
+
+ .text__content {
+  width: 50%;
+  color:rgb(0, 32, 96);
+  font-size:24px ;
+ }
+
+.general__btn {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  position: absolute;
+  padding: 100px 100px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+  font-size: 25px;
+  cursor: pointer;
+}

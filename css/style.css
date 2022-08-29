@@ -35,22 +35,31 @@ img {
 
 body {
   font-family: 'HeliosCond', 'Montesarat', sans-serif;
-  background: url(../img/Картинка\ для\ Фона\ 1.jpg);
-  background-size: cover;
   max-height: 1080px;
   /* overflow: hidden; */
   background-repeat: no-repeat;
 }
 
 .container {
-padding-top: 10px;
-padding-left: 10px;
-padding-right: 10px;
 display: flex;
 position: relative;
 align-items: center;
+background: url(../img/Картинка\ для\ Фона\ 1.jpg);
 /* outline: 1px solid red; */
-min-height: 1080px;
+background-size: 100% 100%;
+background-position: center center;
+background-repeat: no-repeat;
+height: calc(1080px - 125px);
+}
+
+
+.header {
+  background: #0079c2;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
 }
 
 
@@ -69,12 +78,12 @@ min-height: 1080px;
 
 
 .first__btn {
-  top: 266px;
+  top: 235px;
   left: 153px;
 }
 
 .second__btn {
-  top: 241px;
+  top: 211px;
   left: 234px;
 }
 
@@ -118,32 +127,32 @@ z-index: 2;
 }
 
 .third__btn {
-  top: 175px;
+  top: 150px;
   left: 465px;
 }
 
 .fourth__btn {
-  top: 147px;
+  top: 122px;
   left: 715px;
 }
 
 .fifth__btn {
-  top: 122px;
+  top: 100px;
   left: 966px;
 }
 
 .sixth__btn {
-  top: 106px;
-  left: 1211px;
+  top: 81px;
+  left: 1216px;
 }
 
 .seventh__btn {
-  top: 77px;
+  top: 65px;
   right: 367px;
 }
 
 .eighth__btn {
-  top: 69px;
+  top: 60px;
   right: 119px;
 }
 

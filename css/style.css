@@ -58,7 +58,7 @@ min-height: 1080px;
   position: absolute;
   background: transparent;
   border: none;
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
   border-radius: 50%;
 }
 

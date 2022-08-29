@@ -191,7 +191,7 @@ z-index: 2;
   margin: 10px 20px;
   border-radius: 10px;
   background: transparent;
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

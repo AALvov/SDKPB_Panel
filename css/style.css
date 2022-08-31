@@ -49,7 +49,7 @@ background: url(../img/Картинка\ для\ Фона\ 1.jpg);
 background-size: 100% 100%;
 background-position: center center;
 background-repeat: no-repeat;
-height: calc(1080px - 125px);
+height: calc(950px - 125px);
 }
 
 
@@ -79,12 +79,12 @@ height: calc(1080px - 125px);
 
 
 .first__btn {
-  top: 235px;
+  top: 200px;
   left: 153px;
 }
 
 .second__btn {
-  top: 211px;
+  top: 177px;
   left: 234px;
 }
 
@@ -128,32 +128,32 @@ z-index: 2;
 }
 
 .third__btn {
-  top: 150px;
+  top: 124px;
   left: 465px;
 }
 
 .fourth__btn {
-  top: 122px;
+  top: 105px;
   left: 715px;
 }
 
 .fifth__btn {
-  top: 100px;
+  top: 87px;
   left: 966px;
 }
 
 .sixth__btn {
-  top: 81px;
+  top: 73px;
   left: 1216px;
 }
 
 .seventh__btn {
-  top: 65px;
+  top: 53px;
   right: 367px;
 }
 
 .eighth__btn {
-  top: 60px;
+  top: 46px;
   right: 119px;
 }
 

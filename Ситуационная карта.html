@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:8000/ -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="qnIZOvtsdw2z2pyJQNnQgH9jotOl6oDRKeHCOPPB">
+
+    <title>     Ситуационная карта
+</title>
+
+    <meta property="og:title" content="">
+    <meta property="og:image" content="assets/preview.jpg">
+    <meta property="og:description" content="">
+
+    <!-- Scripts -->
+
+    <script src="./Ситуационная карта_files/tooltip.js.Без названия"></script>
+    <link href="./Ситуационная карта_files/tooltip.css" rel="stylesheet">
+    <script src="./Ситуационная карта_files/modal_windows.js.Без названия"></script>
+    <link href="./Ситуационная карта_files/modal_windows.css" rel="stylesheet">
+
+
+
+
+    <script src="./Ситуационная карта_files/jquery.min.js.Без названия"></script>
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./Ситуационная карта_files/font-awesome.min.css">
+    <link rel="stylesheet" href="./Ситуационная карта_files/style.css">
+    <link rel="stylesheet" href="./Ситуационная карта_files/fonts.css">
+    <link href="http://127.0.0.1:8000/assets/favicon/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+
+
+</head>
+<body>
+
+
+<div class="side_menu">
+    <div class="logo_block">
+    <a class="navbar-brand" href="#">
+        <img alt="Логотип" src="./Ситуационная карта_files/logo.svg" class="side_menu_logo">
+    </a>
+</div>
+<div class="links_block">
+    <ul>
+        <li id="main_link_li" class="active"><a href="#"><img alt="Главная" src="./Ситуационная карта_files/home.svg" class="links_block_icon"></a></li>
+        <li id="OPOs_link_li"><a href="#"><img alt="Настройки" src="./Ситуационная карта_files/settings.svg" class="links_block_icon"></a></li>
+        <li id="docs_link_li"><a href="#"><img alt="Документация" src="./Ситуационная карта_files/docs.svg" class="links_block_icon"></a></li>
+    </ul>
+</div>
+<div class="info_block">
+    <ul>
+        <li class=""><a href="#"><img alt="Справка" src="./Ситуационная карта_files/info.svg" class="side_menu_faq"></a></li>
+    </ul>
+</div>
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+
+        // $('.links_block ul a').each(function () {
+
+        //     //console.log(this.href.split('/'), location.href.split('/'))
+
+        //     if (this.href.split('/')[3] == location.href.split('/')[3]) $(this).parent().addClass('active');
+        // });
+
+        $( '.links_block ul a' ).on( 'click', function () {
+            $( '.links_block ul' ).find( 'li.active' ).removeClass( 'active' );
+            $( this ).parent( 'li' ).addClass( 'active' );
+        });
+
+        // var tooltip_main_content=document.getElementById('main_link_li_tooltip_content');
+        // tooltip_main_content.hidden=false;
+        // var tooltip1=new Tooltip(tooltip_main_content, 'side_menu_main_tooltip', "main_link_li");
+
+        // var tooltip_OPOs_content=document.getElementById('OPOs_link_li_tooltip_content');
+        // tooltip_OPOs_content.hidden=false;
+        // var tooltip2=new Tooltip(tooltip_OPOs_content, 'side_menu_OPOs_tooltip', "OPOs_link_li");
+
+        // var tooltip_docs_content=document.getElementById('docs_link_li_tooltip_content');
+        // tooltip_docs_content.hidden=false;
+        // var tooltip3=new Tooltip(tooltip_docs_content, 'side_menu_docs_tooltip', "docs_link_li");
+    });
+</script>
+</div>
+
+<div class="header">
+    <div class="header_inside">
+    <script src="./Ситуационная карта_files/tooltip.js.Без названия"></script>
+    <link href="./Ситуационная карта_files/tooltip.css" rel="stylesheet">
+    <div class="user_profile">
+        <img alt="Пользователь" src="./Ситуационная карта_files/user.jpg" class="user_avatar">
+        <div class="user_info">
+                          <a class="logout" href="#">
+                <p class="white_text user_name">Пользователь</p>
+               </a>
+                <a class="logout" href="#">
+                    Выйти
+                </a>
+                    </div>
+    </div>
+    <div class="time_block">
+        <p id="time">2022-09-02 11:12:49</p>
+    </div>
+</div>
+
+<script>
+    function updateTime() {
+        var now = new Date()
+        now.setHours(now.getHours() + 3)
+        document.getElementById('time').textContent = now.toISOString().split('T')[0] + ' ' + now.toISOString().split('T')[1].split('.')[0];
+    }
+    setInterval(updateTime, 1000);
+
+</script>
+</div>
+
+<div class="content">
+
+
+
+        <script>
+    mapPage=true;
+</script>
+
+<div class="map_content">
+
+
+    <div class="map_bottom centered">
+
+        <div class="high_risk risk_color"><span></span> Высокий риск аварии (s0.2)</div>
+        <div class="middle_risk risk_color"><span></span> Средний риск аварии (s0.5)</div>
+        <div class="low_risk risk_color"><span></span> Предпосылка к инциденту (s0.8)</div>
+        <div class="no_risk risk_color"><span></span> Штатно (s1)</div>
+        <div class="bad_info_risk risk_color"><span></span> Недостоверные данные </div>
+
+    </div>
+
+    <div wire:id="HDk2swZrzTlHm4JYDIoX">
+    <div class="map_links">
+        <div class="map_block">
+                                                                                            <a href="#" class="map_dot good" style="background-color: #f58b2c" id="astrahan" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                                                                            <a href="#" class="map_dot good" id="krasnodar" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="kuznneck" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="gd-nadym" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="gd-noyabrsk" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="orenburg" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="gd-urengoy" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="shelf" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="gd-yamburg" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="irkutsk" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="salavat" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="gd-spb" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="blagoveshensk" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="moskva-gd" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="volgograd" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="ekaterinburg" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="kazan" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="krasnodar-2" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="mahachkala" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="moskva-gt" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="n-novgorod" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="samara" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="gt-spb" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="saratov" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="stavropol" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="surgut" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="tomsk" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="ufa" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="uhta" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="chaicovsky" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                                                <a href="#" class="map_dot good" id="ugorsk" onmouseover="changeItem()" onmouseout="rechangeItem()"></a>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+    <div wire:id="GwYp5akgEtHveqlDYTtZ">
+        <div id="openModal1" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Астраханская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Астрахань</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Астрахань (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                                <p class="bold dark_grey_text inline_block" id="min_ip_main">0.26</p>
+
+                                <input alt="Показатель" src="http://127.0.0.1:8000/assets/images/icons/rate/good.svg" class="rate_icon clear v" id="good" type="hidden">
+                                <input alt="Показатель" src="http://127.0.0.1:8000/assets/images/icons/rate/bad.svg" class="rate_icon clear v" id="bad" type="hidden">
+                                <p class="good inline_block bordered" id="text_work">Средний риск аварии</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="link_td centered"><a href="http://127.0.0.1:8000/opo/1" class="centered">Перейти к ДО</a></td>
+                                                    </tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal3" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Краснодарский край</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Краснодар </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Краснодар (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal4" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Кемеровская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Кузнецк </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Кузнецк (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal5" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>ЯНАО</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Надым </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Надым (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal6" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>ЯНАО</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Ноябрьск </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Ноябрьск (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal7" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Оренбургская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Оренбург </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Оренбург (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal8" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>ЯНАО</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Уренгой </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Уренгой (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal9" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Сахалинская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Шельф </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча шельф Южно-Сахалинск (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal10" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>ЯНАО</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Ямбург</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Ямбург (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal11" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Иркутская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГД Иркутск</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром добыча Иркутск (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal12" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Башкортостан</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГН Салават</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром нефтехим Салават (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal13" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>СПБ</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГП СПБ</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром переработка (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal14" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Амурская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГП Благовещенск</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром переработка Благовещенск (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal15" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Москва</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>Газпром ПХГ</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром ПХГ (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal16" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Волгоградская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Волгоград</td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Волгоград (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal17" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Свердловская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Екатеринбург </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Екатеринбург (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal18" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Татарстан</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Казань </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Казань (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal19" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Краснодарский край</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Краснодар </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Краснодар (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal20" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Дагестан</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Махачкала </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Махачкала (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal21" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Москва</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Москва </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Москва (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal22" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Нижегородская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Нижний Новгород </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Нижний Новгород (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal23" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Самарская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Самара </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Самара (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal24" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>СПб</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Санкт-Петербург </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Санкт-Петербург (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal25" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Саратовская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Саратов </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Саратов (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal26" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Ставропольский край</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Ставрополь </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Ставрополь (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal27" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>ХМАО</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Сургут </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Сургут (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal81" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Томская обл</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Томск </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Томск (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal82" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Башкортостан</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Уфа </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Уфа (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal83" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Коми</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Ухта </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Ухта (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal84" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>Пермский край</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Чайковский </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Чайковский (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="openModal85" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="http://127.0.0.1:8000/#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <table class="modal_table map_hover">
+                        <tbody>
+                        <tr>
+                            <td>Регион</td>
+                            <td>ХМАО</td>
+                        </tr>
+                        <tr>
+                            <td>Сокращение</td>
+                            <td>ГТ Югорск </td>
+                        </tr>
+                        <tr>
+                            <td>ДО</td>
+                            <td>Газпром трансгаз Югорск (ООО)</td>
+                        </tr>
+                        <tr>
+                            <td>Состояние</td>
+                            <td class="sost bold">
+                                                        </td></tr>
+
+                        <script>
+                            $(document).ready(function (){
+                                $.ajax({
+                                    url:"/min_opo",
+                                    type:"GET",
+                                    success:function(data)
+                                    {
+                                        $('#min_ip_main').text(data['min_last'])
+                                        if (data['check'] == 1){
+                                            document.getElementById('good').type="image"
+                                            document.getElementById('good').style.maxHeight="15px"
+                                            document.getElementById('bad').type="hidden"
+                                        } if (data['check'] == 0) {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="image"
+                                            document.getElementById('bad').style.maxHeight="15px"
+                                        } else {
+                                            document.getElementById('good').type="hidden"
+                                            document.getElementById('bad').type="hidden"
+                                        }
+                                        if (data['min_last'] > 0){
+                                            $('#text_work').text('Высокий риск аварии')
+                                        } if (data['min_last'] > 0.2){
+                                            $('#text_work').text('Средний риск аварии')
+                                        } if (data['min_last'] > 0.5){
+                                        $('#text_work').text('Предпосылка к инциденту')
+                                        } if (data['min_last'] > 0.8) {
+                                        $('#text_work').text('Работает штатно')
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function test() {
+        var content=document.getElementById('change_password_message_content')
+        var mod=new ModalWindow('ВНИМАНИЕ',content, AnimationsTypes['slideIn'])
+        if (0==1){
+            mod.show();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+</script>
+
+
+
+
+</div>
+
+
+
+
+<!-- Livewire Scripts -->
+
+<script src="./Ситуационная карта_files/livewire.js.Без названия" data-turbo-eval="false" data-turbolinks-eval="false"></script>
+<script data-turbo-eval="false" data-turbolinks-eval="false">
+    if (window.livewire) {
+	    console.warn('Livewire: It looks like Livewire\'s @livewireScripts JavaScript assets have already been loaded. Make sure you aren\'t loading them twice.')
+	}
+
+    window.livewire = new Livewire();
+    window.livewire.devTools(true);
+    window.Livewire = window.livewire;
+    window.livewire_app_url = '';
+    window.livewire_token = 'qnIZOvtsdw2z2pyJQNnQgH9jotOl6oDRKeHCOPPB';
+
+	/* Make sure Livewire loads first. */
+	if (window.Alpine) {
+	    /* Defer showing the warning so it doesn't get buried under downstream errors. */
+	    document.addEventListener("DOMContentLoaded", function () {
+	        setTimeout(function() {
+	            console.warn("Livewire: It looks like AlpineJS has already been loaded. Make sure Livewire\'s scripts are loaded before Alpine.\\n\\n Reference docs for more info: http://laravel-livewire.com/docs/alpine-js")
+	        })
+	    });
+	}
+
+	/* Make Alpine wait until Livewire is finished rendering to do its thing. */
+    window.deferLoadingAlpine = function (callback) {
+        window.addEventListener('livewire:load', function () {
+            callback();
+        });
+    };
+
+    let started = false;
+
+    window.addEventListener('alpine:initializing', function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="./Ситуационная карта_files/top_table.js.Без названия"></script>
+
+<div class="dlg-modal SlideOut"><div class="dlg-view"><div class="dlg-header"><span class="dlg-close-btn"></span><h3 class="dlg-header-text">ВНИМАНИЕ</h3></div><div class="dlg-content"><div id="change_password_message_content" style="text-align: center">
+    <h3>Пароль от учетной записи необходимо обновить!</h3>
+</div></div></div></div><div class="overlay"></div><div class="JustMeOut" id="dlg_modal"><div id="dlg_view"><div class="dlg-header"><h3 class="dlg-header-text">Внимание, новое событие</h3></div><div class="dlg-content"><div id="new_jas_1_modal_content" class="event">
+        <table class="eventTable">
+            <tbody>
+            <tr>
+                <td class="td_date">Дата</td>
+                <td class="td_status">Статус</td>
+                <td class="td_opo">ОПО</td>
+                <td class="td_element">Элемент ОПО</td>
+                <td class="td_number">Состояние</td>
+                <td class="td_event">Событие</td>
+            </tr>
+            </tbody>
+        </table>
+    </div></div><button class="close-btn" style="background: rgb(66, 133, 244);">Закрыть</button></div></div><div id="full_overlay"></div><div id="side_menu_main_tooltip" class="classicPrompt"><span id="main_link_li_tooltip_content">Главная</span></div><div id="side_menu_OPOs_tooltip" class="classicPrompt"><span id="OPOs_link_li_tooltip_content">ОПО</span></div><div id="side_menu_docs_tooltip" class="classicPrompt" style="top: 0px; left: 0px; display: none;"><span id="docs_link_li_tooltip_content">Документы</span></div></body></html>
